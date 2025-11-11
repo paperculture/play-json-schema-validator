@@ -6,7 +6,7 @@ val Repositories = Seq(
 
 val commonSettings = Seq(
   organization := "com.eclipsesource",
-  scalaVersion := "2.12.0",
+  scalaVersion := "2.12.8",
   crossScalaVersions := Seq("2.12.8", "2.13.0"),
   licenses := Seq("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
   Keys.fork in Test := false,
