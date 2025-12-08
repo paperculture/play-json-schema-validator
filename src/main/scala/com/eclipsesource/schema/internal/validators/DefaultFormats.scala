@@ -7,7 +7,7 @@ import java.util.regex.Pattern
 import com.eclipsesource.schema.SchemaFormat
 import com.google.common.net.InetAddresses
 import io.mola.galimatias.URL
-import jdk.nashorn.internal.runtime.regexp.RegExpFactory
+import org.openjdk.nashorn.internal.runtime.regexp.RegExpFactory
 import play.api.libs.json.{JsNumber, JsString, JsValue}
 
 import scala.util.Try

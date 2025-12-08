@@ -31,7 +31,8 @@ class RemoteSpecs extends Specification with JsonSpec with Online with AfterAll 
   def createApp: Application = new GuiceApplicationBuilder()
     .appRoutes(app => {
       val Action = app.injector.instanceOf[DefaultActionBuilder]
-      Assets.routes(Action)(getClass, "remotes/")
+      val assets = app.injector.instanceOf[Assets]
+      assets.routes(Action)(getClass, "remotes/")
     })
     .build()
 
