@@ -9,14 +9,17 @@ val commonSettings = Seq(
   scalaVersion := "2.13.16",
   crossScalaVersions := Seq("2.13.16"),
   licenses := Seq("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
-  Keys.fork in Test := false,
-  Keys.parallelExecution in Test := false
+  Test / fork := false,
+  Test / parallelExecution := false
 )
 
 val releaseSettings = Seq(
   githubOwner := "paperculture",
   githubRepository := "play-json-schema-validator",
-  githubTokenSource := TokenSource.GitConfig("github.token"),
+  githubTokenSource := TokenSource.Or(
+    TokenSource.Environment("GITHUB_TOKEN"),
+    TokenSource.GitConfig("github.token")
+  ),
   Test / publishArtifact := false,
   publishMavenStyle := true,
   pomIncludeRepository := { _ => false },
