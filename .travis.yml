@@ -1,11 +1,10 @@
 language: scala
 
 scala:
-  - "2.12.8"
-  - "2.13.0"
+  - "2.13.16"
 
 jdk:
-  - openjdk11
+  - openjdk17
 
 # These directories are cached to S3 at the end of the build
 cache:
@@ -14,7 +13,7 @@ cache:
     - $HOME/.sbt/boot/
 
 script:
-  - sbt -sbt-version 1.2.8 -scala-version $TRAVIS_SCALA_VERSION clean coverage test
+  - sbt -sbt-version 1.9.9 -scala-version $TRAVIS_SCALA_VERSION clean coverage test
 
 after_success:
   - sbt coverageReport coveralls
