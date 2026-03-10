@@ -15,19 +15,33 @@ If you experience any issues or have feature requests etc., please don't hesitat
 
 ## <a name="Installation">Installation 
 
+### Requirements
+
+- **Java 17 or higher** (required as of version 0.10.0)
+- **Scala 2.13.16** (Scala 2.12 support was dropped in version 0.10.0)
+
+### SBT Configuration
+
 Add an additional resolver to your `build.sbt` file:
 
 ```
+
+Then add the dependency:
+
+```scala
+libraryDependencies += "com.eclipsesource" %% "play-json-schema-validator" % "0.10.0"
+```
+```
 resolvers += "emueller-bintray" at "http://dl.bintray.com/emueller/maven"
 ```
+**Version compatibility:**
 
-Then add the dependency (supporting Scala 2.12/2.13):
+| Version | Java | Scala | Notes |
+|---------|------|-------|-------|
+| 0.10.0+ | 17+ | 2.13 only | Play Framework 2.9, modern dependencies |
+| 0.9.x | 8-11 | 2.12, 2.13 | Legacy version for older Java/Scala |
 
-```Scala
-libraryDependencies += "com.eclipsesource"  %% "play-json-schema-validator" % "0.9.5"
-```
-
-Please also see the [respective release notes](https://github.com/eclipsesource/play-json-schema-validator/releases/tag/v0.9.5).
+Please also see the [respective release notes](https://github.com/eclipsesource/play-json-schema-validator/releases).
  
 ## Usage
 

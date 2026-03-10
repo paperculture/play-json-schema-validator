@@ -6,7 +6,7 @@ import com.eclipsesource.schema.SchemaResolutionContext
 import com.eclipsesource.schema.internal.validation.Rule
 import com.eclipsesource.schema.internal.{Keywords, SchemaUtil, ValidatorMessages}
 import com.osinka.i18n.Lang
-import jdk.nashorn.internal.runtime.regexp.RegExpFactory
+import org.openjdk.nashorn.internal.runtime.regexp.RegExpFactory
 import play.api.libs.json.{JsString, JsValue}
 import scalaz.Success
 

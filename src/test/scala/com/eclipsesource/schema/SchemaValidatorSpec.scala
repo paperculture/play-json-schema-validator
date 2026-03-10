@@ -20,7 +20,8 @@ class SchemaValidatorSpec extends PlaySpecification with ErrorHelper { self =>
   def createApp: Application = new GuiceApplicationBuilder()
     .appRoutes(app => {
       val Action = app.injector.instanceOf[DefaultActionBuilder]
-      Assets.routes(Action)(getClass)
+      val assets = app.injector.instanceOf[Assets]
+      assets.routes(Action)(getClass)
     })
     .build()
 

@@ -6,18 +6,21 @@ val Repositories = Seq(
 
 val commonSettings = Seq(
   organization := "com.eclipsesource",
-  scalaVersion := "2.12.8",
-  crossScalaVersions := Seq("2.12.8", "2.13.0"),
+  scalaVersion := "2.13.16",
+  crossScalaVersions := Seq("2.13.16"),
   licenses := Seq("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
-  Keys.fork in Test := false,
-  Keys.parallelExecution in Test := false
+  Test / fork := false,
+  Test / parallelExecution := false
 )
 
 val releaseSettings = Seq(
   githubOwner := "paperculture",
   githubRepository := "play-json-schema-validator",
-  githubTokenSource := TokenSource.GitConfig("github.token"),
-  publishArtifact in Test := false,
+  githubTokenSource := TokenSource.Or(
+    TokenSource.Environment("GITHUB_TOKEN"),
+    TokenSource.GitConfig("github.token")
+  ),
+  Test / publishArtifact := false,
   publishMavenStyle := true,
   pomIncludeRepository := { _ => false },
   pomExtra :=
@@ -41,7 +44,7 @@ val releaseSettings = Seq(
 
 val buildSettings = Defaults.coreDefaultSettings ++ commonSettings
 
-val testSettings = unmanagedJars in Test ++= Seq(
+val testSettings = Test / unmanagedJars ++= Seq(
   baseDirectory.value / "src/test/resources/simple-schema.jar",
   baseDirectory.value / "src/test/resources/simple-schema-issue-65.jar",
   baseDirectory.value / "src/test/resources/issue-65.jar"

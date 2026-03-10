@@ -1,9 +1,13 @@
 package com.eclipsesource.schema.test
 
+import jakarta.inject.{Inject, Singleton}
 import play.api.http.{DefaultFileMimeTypes, FileMimeTypesConfiguration}
 import play.api.mvc.{DefaultActionBuilder, Handler}
 
-object Assets {
+import scala.concurrent.ExecutionContext
+
+@Singleton
+class Assets @Inject()(implicit ec: ExecutionContext) {
 
   import play.api.mvc.Results._
   implicit val mimeTypes = new DefaultFileMimeTypes(FileMimeTypesConfiguration(Map("json" -> "application/json")))
